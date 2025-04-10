@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TodoDatabase.Data;
 
@@ -11,9 +12,11 @@ using TodoDatabase.Data;
 namespace TodoDatabase.Migrations
 {
     [DbContext(typeof(TodoDatabaseContext))]
-    partial class TodoDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20250320154941_NullFields")]
+    partial class NullFields
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
