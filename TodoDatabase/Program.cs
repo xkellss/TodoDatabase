@@ -111,13 +111,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-
-builder.Services.AddDbContext<TodoDatabaseContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("todoAppDBCon")));
-
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddDbContext<TodoDatabaseContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("todoAppDBCon")));
 
 
 //JSON Serializer
@@ -128,14 +127,14 @@ options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHa
 var app = builder.Build();
 
 
-//Enable Cors to consume services from front end project
-app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//Enable Cors to consume services from front end project
+app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
 
 app.UseAuthorization();
 

@@ -29,7 +29,17 @@ namespace TodoDatabase.Controllers
             // Async converts it into a list
         }
 
+        [HttpPost]
+        public async Task<IActionResult> AddTask(TodoTask todotask)
+        {
+            todotask.Id = Guid.NewGuid(); //dont want to passs todo guid from ui, everytime we create tassk we want to assign id from backend
 
+            _context.TodoTasks.Add(todotask);
+
+           await _context.SaveChangesAsync();
+
+            return Ok(todotask);
+        }
 
 
 
