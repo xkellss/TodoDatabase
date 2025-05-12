@@ -31,6 +31,7 @@ namespace TodoDatabase.Controllers
 
         [HttpPost]
         public async Task<IActionResult> AddTask(TodoTask todotask)
+            //IActionResult - returns an HTTP response( like OK or error)
         {
             todotask.Id = Guid.NewGuid(); //dont want to passs todo guid from ui, everytime we create tassk we want to assign id from backend
 
